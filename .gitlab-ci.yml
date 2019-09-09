@@ -4,7 +4,7 @@ stages:
 test:
   stage: test
   script:
-    - activate xw27
+#    - activate xw27
     - python -c "import sys; print(sys.version)"
     - cd xlwings
     - nosetests
