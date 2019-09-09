@@ -5,7 +5,9 @@ test:
   stage: test
   script:
 #    - activate xw27
-    - python -c "import sys; print(sys.version)"
     - cd xlwings
-    - nosetests
+    - conda run -n xw27 nosetests
+#    - python -c "import sys; print(sys.version)"
+#    - cd xlwings
+#    - nosetests
 #    - msbuild src/xlwings.sln /p:Configuration=Release
