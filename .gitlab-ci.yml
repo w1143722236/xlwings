@@ -5,4 +5,4 @@ test:
   stage: test
   script:
     - python -c "import sys; print(sys.version)"
-    - msbuild src/xlwings.sln /p:Configuration=Release
+    - C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild src/xlwings.sln /p:Configuration=Release
