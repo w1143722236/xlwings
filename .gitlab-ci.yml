@@ -9,7 +9,7 @@ test:
     - cd xlwings
     - echo %cd%
 #    - conda run -n xw27 python -c "import sys; print(sys.version)"
-    - conda run -n xw27 python tests\test_names.py
+    - conda run -n xw27 nosetests tests\test_names.py
 #    - cd xlwings
 #    - nosetests
 #    - msbuild src/xlwings.sln /p:Configuration=Release
