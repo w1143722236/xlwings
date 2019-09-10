@@ -5,8 +5,11 @@ test:
   stage: test
   script:
 #    - activate xw27
-#    - cd xlwings
+    - echo %cd%
+    - cd xlwings
+    - echo %cd%
     - conda run -n xw27 python -c "import sys; print(sys.version)"
+    - conda run -n xw27 python xlwings\tests\test_names.py
 #    - cd xlwings
 #    - nosetests
 #    - msbuild src/xlwings.sln /p:Configuration=Release
