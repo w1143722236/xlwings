@@ -36,3 +36,4 @@ class TestBase(unittest.TestCase):
     def tearDownClass(cls):
         cls.app1.quit()
         cls.app2.quit()
+
