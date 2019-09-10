@@ -34,5 +34,5 @@ class TestBase(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        cls.app1.kill()
-        cls.app2.kill()
+        cls.app1.quit()
+        cls.app2.quit()
