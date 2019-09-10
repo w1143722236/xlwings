@@ -16,8 +16,8 @@ SPEC = None
 class TestBase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.app1 = xw.App(visible=False, spec=SPEC)
-        cls.app2 = xw.App(visible=False, spec=SPEC)
+        cls.app1 = xw.App(visible=True, spec=SPEC)
+        cls.app2 = xw.App(visible=True, spec=SPEC)
 
     def setUp(self):
         self.wb1 = self.app1.books.add()
