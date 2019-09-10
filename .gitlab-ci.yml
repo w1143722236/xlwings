@@ -8,7 +8,7 @@ test:
     - echo %cd%
     - cd xlwings
     - echo %cd%
-    - conda run -n xw27 python -c "import sys; print(sys.version)"
+#    - conda run -n xw27 python -c "import sys; print(sys.version)"
     - conda run -n xw27 python tests\test_names.py
 #    - cd xlwings
 #    - nosetests
