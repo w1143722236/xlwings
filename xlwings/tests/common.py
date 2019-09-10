@@ -30,7 +30,8 @@ class TestBase(unittest.TestCase):
 
     def tearDown(self):
         for app in [self.app1, self.app2]:
-            app.books[-1].save()
+            for wb in app.books:
+                wb.close()
 
     @classmethod
     def tearDownClass(cls):
