@@ -1,8 +1,44 @@
 What's New
 ==========
 
-v0.15.7 (May 5, 2019)
+v0.16.0 (Oct 13, 2019)
 ----------------------
+
+This release adds a small but very powerful feature: There's a new ``Run main`` button in the add-in.
+With that, you can run your Python scripts from standard ``xlsx`` files - no need to save your workbook
+as macro-enabled anymore! 
+
+The only condition to make that work is that your Python script has the same name as your workbook and that it contains
+a function called ``main``, which will be called when you click the ``Run`` button. All settings from your config file or
+config sheet are still respected, so this will work even if you have the source file in a different directory
+than your workbook (as long as that directory is added to the ``PYTHONPATH`` in your config).
+
+The ``xlwings quickstart myproject`` has been updated accordingly. It still produces an ``xlsm`` file at the moment
+but you can save it as ``xlsx`` file if you intend to run it via the new ``Run`` button.
+
+    .. figure:: images/ribbon.png
+        :scale: 40%
+
+v0.15.10 (Aug 31, 2019)
+-----------------------
+
+* [Bug Fix] Fixed a Python 2.7 incompatibility introduced with 0.15.9.
+
+v0.15.9 (Aug 31, 2019)
+----------------------
+
+* [Enhancement] The ``sql`` extension now uses the native dynamic arrays if available (:issue:`1138`).
+* [Enhancement] xlwings now support ``Path`` objects from ``pathlib`` for all file paths (:issue:`1126`).
+* [Bug Fix] Various bug fixes: (:issue:`1118`), (:issue:`1131`), (:issue:`1102`).
+
+v0.15.8 (May 5, 2019)
+---------------------
+
+* [Bug Fix] Fixed an issue introduced with the previous release that always showed the command prompt when running UDFs,
+  not just when using conda envs (:issue:`1098`).
+
+v0.15.7 (May 5, 2019)
+---------------------
 
 * [Bug Fix] ``Conda Base`` and ``Conda Env`` weren't stored correctly in the config file from the ribbon (:issue:`1090`).
 * [Bug Fix] UDFs now work correctly with ``Conda Base`` and ``Conda Env``. Note, however, that currently there is no
@@ -489,7 +525,7 @@ Some of the new methods/properties worth mentioning are:
 Bug Fixes
 *********
 
-* See `here <https://github.com/ZoomerAnalytics/xlwings/issues?q=is%3Aclosed+is%3Aissue+milestone%3Av0.9.0+label%3Abug>`_
+* See `here <https://github.com/xlwings/xlwings/issues?q=is%3Aclosed+is%3Aissue+milestone%3Av0.9.0+label%3Abug>`_
   for details about which bugs have been fixed.
 
 
@@ -938,8 +974,8 @@ This version adds support for Matplotlib! Matplotlib figures can be shown in Exc
     plot.show('Plot1')
 
 See the full API: :meth:`xlwings.Plot`. There's also a new example available both on
-`GitHub <https://github.com/ZoomerAnalytics/xlwings/tree/master/examples/matplotlib/>`_ and as download on the
-`homepage <http://xlwings.org/examples//>`_.
+`GitHub <https://github.com/xlwings/xlwings/tree/master/examples/matplotlib/>`_ and as download on the
+`homepage <http://www.xlwings.org/examples>`_.
 
 **Other enhancements**:
 
@@ -1264,7 +1300,7 @@ API changes
 Enhancements
 ************
 This version adds two exciting but still **experimental** features from
-`ExcelPython <http://ericremoreynolds.github.io/excelpython//>`_ (**Windows only!**):
+`ExcelPython` (**Windows only!**):
 
 * Optimized connection: Set the ``OPTIMIZED_CONNECTION = True`` in the VBA settings. This will use a COM server that
   will keep the connection to Python alive between different calls and is therefore much more efficient. However,

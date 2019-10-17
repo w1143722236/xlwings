@@ -11,6 +11,20 @@ The source for the Python package is in the `xlwings` directory.
    but runs from your cloned source code, i.e. you can edit/debug the xlwings code.
 5. Install the optional dependencies according to your platform with: `pip install -r requirements/devwin.txt` or `.../devmac.txt`
 
+## Mac implementation
+
+All mac specific code is in `xlwings/_xlmac.py`. To find out the syntax of a new feature, it sometimes works by just looking at the existing
+code and comparing it with the dictionaries exported by `ASDictionary` (see under `resources/mac`).
+If that doesn't work, you'll need to find out the corresponding syntax in `AppleScript`, e.g. by looking at `Excel2004AppleScriptRef.pdf`
+under `resouces/mac` or by searching the internet. Then use `ASTranslate` to translate it into `appscript` syntax. Unfortunately,
+ASTranslate fails on the latest versions of macOS. A workaround is to run it on an old macOS (e.g. OS 10.11 - El Capitan) in a VM.
+
+Links:
+
+[appscript homepage](http://appscript.sourceforge.net/)  
+[ASTranslate & ASDictionary download](https://sourceforge.net/projects/appscript/files/)  
+[appscript source code](https://sourceforge.net/p/appscript/code/HEAD/tree/)
+
 ## Addin
 
 Install the addin in Excel by going to `Developer` > `Excel Add-in` > `Browse` and pointing to the addin in the source code,
@@ -41,3 +55,22 @@ by something like `tox` again now that numpy/pandas are available as wheels via 
 The tests are currently very slow. They were OK with older versions of Excel but they have to be rewritten
 to run reasonably fast (i.e. not always open/close the whole workbook).
 Also, the tests are standard unittests, so `nose` is not really required to run them.
+
+
+## Build docs locally
+
+```
+cd docs
+make html
+```
+
+### Build doc translations locally
+
+See https://docs.readthedocs.io/en/stable/guides/manage-translations.html#manage-translations
+
+### Add a translation to readthedocs
+
+* `.po` files must live under `docs/locales/<language>/LC_MESSAGES`
+* Create a new project (`xlwings-<language>`) via generic Git integration as you can only import a project 1x via the GitHub integration.
+* Set the language of that project to the language of the translation
+* Add this project as `Translation` in the settings of the main `xlwings` project
